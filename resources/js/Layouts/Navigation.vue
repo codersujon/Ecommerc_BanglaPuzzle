@@ -24,7 +24,7 @@ let showingTwoLevelMenu = ref(false)
                         fill="white"/>
                 </svg>
 
-                <span class="mx-2 text-2xl font-semibold text-white">Dashboard</span>
+                <span class="mx-2 text-2xl font-semibold text-white">E-Commerce</span>
             </div>
         </div>
 

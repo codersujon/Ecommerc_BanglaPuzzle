@@ -3,7 +3,7 @@
 
     <AuthenticatedLayout>
         <template #header>
-            Okay
+            About Us
         </template>
 
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
