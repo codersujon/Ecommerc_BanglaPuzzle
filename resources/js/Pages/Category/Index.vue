@@ -1,7 +1,8 @@
 <script setup>
-    import { Head } from '@inertiajs/vue3';
+    import { Head, Link } from '@inertiajs/vue3';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import Pagination from '@/Components/Pagination.vue'
+
     
     // Props
     const props = defineProps({
@@ -20,8 +21,18 @@
             Category List
         </template>
 
-        <!-- table -->
         <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
+             <!-- Add Category -->
+            <div class="flex justify-end">
+                <button class="bg-blue-500 mx-1 mb-3 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded justify-content-end">
+                    <Link :href="route('categories.create')">
+                        <i class="fa-solid fa-plus"></i>
+                        Add category
+                    </Link>
+                </button>
+            </div>
+        
+            <!-- table -->
             <table class="w-full whitespace-no-wrap">
                 <thead>
                     <tr class="border-b bg-slate-950 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
@@ -61,8 +72,10 @@
                         </td>
                         <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <button class="bg-blue-500 mx-1 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                                Edit
+                                <Link :href="route('categories.edit', category.id)">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Edit
+                                </Link>
                             </button>
                             <button class="bg-red-500 mx-1 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
                                 <i class="fa-solid fa-trash"></i>
