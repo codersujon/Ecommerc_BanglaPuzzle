@@ -1,8 +1,8 @@
 <script setup>
-    import { Head, Link } from '@inertiajs/vue3';
+    import { Head, Link, router } from '@inertiajs/vue3';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import Pagination from '@/Components/Pagination.vue'
-
+    import Swal from 'sweetalert2';
     
     // Props
     const props = defineProps({
@@ -10,6 +10,43 @@
             type: Object
         }
     });
+
+    /**
+     * onDelete Category
+     */
+    const deleteCategory = (category, index) =>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#009432",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No",
+        }).then((result)=>{
+                if(result.isConfirmed){
+
+                    try {
+                    router.delete('categories/' + category.id, {
+                        onSuccess: (page) => {
+                            Swal.fire({
+                                toast: true,
+                                position: "top-end",
+                                icon: "success",
+                                showConfirmButton: false,
+                                title: page.props.flash.success
+                            });
+                        }
+                    });
+
+                    } catch (error) {
+                        console.log(error);
+                    }
+
+                }
+        });
+    }
 
 </script>
 <template>
@@ -77,7 +114,7 @@
                                     Edit
                                 </Link>
                             </button>
-                            <button class="bg-red-500 mx-1 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
+                            <button @click="deleteCategory(category, index)" class="bg-red-500 mx-1 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
                                 <i class="fa-solid fa-trash"></i>
                                 Delete
                             </button>
