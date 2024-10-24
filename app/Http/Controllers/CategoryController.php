@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         return Inertia::render('Category/Index', [
-            'categories' => Category::paginate(10)
+            'categories' => Category::latest()->paginate(10)
         ]);
     }
 
@@ -31,7 +31,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Inline Validation
+        $request->validate([
+            'category_name' => 'required|unique:categories|max:255',
+            'description' => 'required'
+        ]);
+
+        Category::create([
+            'category_name' => ucwords($request->category_name),
+            'description' => $request->description
+        ]);
+        return redirect()->route('categories.index')->with('success', "Category Created!");
     }
 
     /**
@@ -39,7 +49,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+       //
     }
 
     /**
@@ -47,7 +57,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return Inertia::render('Category/Edit');
+        return Inertia::render('Category/Edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -55,7 +67,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update([
+            'category_name' => ucwords($request->category_name),
+            'description' => $request->description
+        ]);
+        return redirect()->route('categories.index')->with('success', "Category Updated!");
     }
 
     /**
