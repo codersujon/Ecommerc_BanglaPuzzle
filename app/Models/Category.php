@@ -22,4 +22,12 @@ class Category extends Model
             ->generateSlugsFrom('category_name')
             ->saveSlugsTo('slug');
     }
+
+    /**
+     * Relationship with SubCategory
+     * One Category has Many SubCategories
+     */
+    public function subcategories(){
+        return $this->hasMany(SubCategory::class);
+    }
 }

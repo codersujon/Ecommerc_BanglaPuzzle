@@ -28,4 +28,12 @@ class SubCategory extends Model
             ->generateSlugsFrom('subcategory_name')
             ->saveSlugsTo('slug');
     }
+
+    /**
+     * RelationShip
+     * One SubCategory belongsTo a Category
+     */
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

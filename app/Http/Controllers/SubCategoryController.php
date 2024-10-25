@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Subcategory/Index', [
+            'subcategories' => SubCategory::latest()->with('category')->paginate(10)
+        ]);
     }
 
     /**
@@ -20,7 +24,9 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Subcategory/Create', [
+            "categories" => Category::all(),
+        ]);
     }
 
     /**
@@ -28,7 +34,20 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Inline Validation
+        $request->validate([
+            'category_id' => 'required',
+            'subcategory_name' => 'required|max:255',
+            'description' => 'required'
+        ]);
+
+        SubCategory::create([
+            'category_id' => $request->category_id,
+            'subcategory_name' => ucwords($request->subcategory_name),
+            'description' => $request->description
+        ]);
+
+        return redirect()->route('subcategories.index')->with('success', "SubCategory Created!");
     }
 
     /**
@@ -44,7 +63,9 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subCategory)
     {
-        //
+        return Inertia::render('Subcategory/Edit', [
+            'subcategory' => SubCategory::with('category')->get()
+        ]);
     }
 
     /**
@@ -60,6 +81,6 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subCategory)
     {
-        //
+       
     }
 }
