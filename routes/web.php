@@ -40,13 +40,10 @@ Route::middleware('auth')->group(function () {
      * Category
      */
     Route::resource('categories', CategoryController::class)->except(['show']);
-<<<<<<< HEAD
-=======
     
     /**
      * SubCategory
      */
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
     Route::resource('subcategories', SubCategoryController::class)->except(['show']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

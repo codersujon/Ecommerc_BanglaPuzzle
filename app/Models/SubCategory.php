@@ -32,11 +32,8 @@ class SubCategory extends Model
     /**
      * RelationShip
      * One SubCategory belongsTo a Category
-<<<<<<< HEAD
     */
-=======
-     */
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
