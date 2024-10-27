@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function () {
      * Category
      */
     Route::resource('categories', CategoryController::class)->except(['show']);
+    Route::resource('subcategories', SubCategoryController::class)->except(['show']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
