@@ -1,9 +1,5 @@
 <script setup>
-<<<<<<< HEAD
-    import { Head, Link, router, useForm } from '@inertiajs/vue3';
-=======
     import { Head, Link, useForm, router } from '@inertiajs/vue3';
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import Swal from 'sweetalert2';
 
@@ -20,22 +16,12 @@
     });
 
     /**
-<<<<<<< HEAD
      * Add Subcategory
      */
     const storeSubCategory = async () =>{
-        try{
-            await router.post(route('subcategories.store'), form, {
-                onSuccess: (page) => {
-=======
-     * Store SubCategory
-     */
-
-     const storeSubCategory = async () =>{
         try {
             await router.post(route('subcategories.store'), form, {
                 onSuccess: page => {
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
                     Swal.fire({
                         toast: true,
                         position: "top-end",
@@ -50,7 +36,6 @@
                         title: page.props.flash.success
                     });
                 }
-<<<<<<< HEAD
             })
         }catch(error){
             console.log(error);
@@ -58,36 +43,18 @@
     }
 
 </script>
-<template>
-      <Head  title="Add Subcategory" />
-      
-      <AuthenticatedLayout>
-        <!-- header -->
-        <template #header>
-            Add Subcategory
-=======
-            });
-        } catch (error) {
-            console.log(error);
-        }
-     }
 
-</script>
 <template>
-
     <Head title="Add SubCategory" />
 
     <AuthenticatedLayout>
         <!-- header -->
         <template #header>
             Add SubCategory
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
         </template>
-
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-10 bg-white rounded">
             <form @submit.prevent="storeSubCategory()">
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-<<<<<<< HEAD
                     <!-- Subcategory name -->
                     <div class="sm:col-span-2">
                         <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Category</label>
@@ -102,31 +69,12 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subcategory
                             Name</label>
                         <input type="text" v-model="form.subcategory_name" name="category_name" id="subcategory_name"
-=======
-
-                    <!-- select category name -->
-                    <div class="sm:col-span-2">
-                        <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <select id="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" v-model="form.category_id">
-                            <option selected="">Select category</option>
-                            <option :value="category.id" v-for="category in props.categories" :key="category.id">{{ category.category_name }}</option>
-                        </select>
-                    </div>
-
-                    <!-- subcategory name -->
-                    <div class="sm:col-span-2">
-                        <label for="subcategory_name"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SubCategory
-                            Name</label>
-                        <input type="text" name="subcategory_name" id="subcategory_name" v-model="form.subcategory_name"
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Category name" required="">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="description"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-<<<<<<< HEAD
                         <textarea id="description" rows="4" v-model="form.description" name="description" 
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Subcategory description "></textarea>
@@ -137,20 +85,5 @@
                 </button>
             </form>
         </div>
-      </AuthenticatedLayout>
-=======
-                        <textarea id="description" v-model="form.description" rows="4" name="description"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Category description"></textarea>
-                    </div>
-                </div>
-                <button type="submit"
-                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-blue-500 text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                    Save
-                </button>
-            </form>
-        </div>
-
     </AuthenticatedLayout>
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
 </template>

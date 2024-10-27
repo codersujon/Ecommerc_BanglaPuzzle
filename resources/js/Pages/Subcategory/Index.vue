@@ -3,26 +3,18 @@
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import Pagination from '@/Components/Pagination.vue'
     import Swal from 'sweetalert2';
-<<<<<<< HEAD
-
     // Props
     const props = defineProps({
         subcategories: {
-=======
-    
-    // Props
-    const props = defineProps({
-        subcategories:{
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
             type: Object
         }
     });
 
-<<<<<<< HEAD
     /**
      * Delete SubCategory
      */
-    const deleteSubcategory = (subcategory, i) =>{
+
+     const deleteSubcategory = (subcategory, index) =>{
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -36,7 +28,7 @@
                 if(result.isConfirmed){
 
                     try {
-                    router.delete('subcategories/' + subcategory.id, {
+                    router.delete(route('subcategories.destroy', subcategory.id), {
                         onSuccess: (page) => {
                             Swal.fire({
                                 toast: true,
@@ -51,23 +43,11 @@
                     } catch (error) {
                         console.log(error);
                     }
+
                 }
         });
-    }
+     }
 
-</script>
-<template>
-      <Head  title="Subcategory" />
-      
-      <AuthenticatedLayout>
-        <!-- header -->
-        <template #header>
-            Subcategory List
-        </template>
-
-        <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-            <!-- Add Category -->
-=======
 </script>
 <template>
     <Head  title="SubCategory" />
@@ -80,39 +60,24 @@
 
         <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
              <!-- Add Category -->
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
             <div class="flex justify-end">
                 <button class="bg-blue-500 mx-1 mb-3 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded justify-content-end">
                     <Link :href="route('subcategories.create')">
                         <i class="fa-solid fa-plus"></i>
-<<<<<<< HEAD
                         Add Subcategory
                     </Link>
                 </button>
             </div>
     
             <!-- table -->
-           <table class="w-full whitespace-no-wrap">
-=======
-                        Add SubCategory
-                    </Link>
-                </button>
-            </div>
-        
-            <!-- table -->
             <table class="w-full whitespace-no-wrap">
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
                 <thead>
                     <tr class="border-b bg-slate-950 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
                         <th class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                             #Id
                         </th>
                         <th class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-<<<<<<< HEAD
                             Category Name
-=======
-                            Category ID
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
                         </th>
                         <th class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                             SubCategory Name
@@ -129,11 +94,8 @@
                     </tr>
                 </thead>
                 <tbody>
-<<<<<<< HEAD
                     <tr class="text-gray-700" v-for="(subcategory, i) in  props.subcategories.data" :key="subcategory.id">
-=======
-                    <tr class="text-gray-700" v-for="(subcategory, i) in props.subcategories.data" :key="subcategory.id">
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
+
                         <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">{{ i+1 }}</p>
                         </td>
@@ -147,12 +109,6 @@
                             <p class="text-gray-900 whitespace-no-wrap">{{ subcategory.description }}</p>
                         </td>
                         <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-<<<<<<< HEAD
-                            <a href="" class="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded font-bold">
-                                <i class="fa-solid fa-circle-check"></i>
-                                Active
-                            </a>
-=======
                             <a href="" v-if="subcategory.is_active == 1" class="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded font-bold">
                                 <i class="fa-solid fa-circle-check"></i>
                                 Active
@@ -161,7 +117,6 @@
                                 <i class="fa-solid fa-circle-check"></i>
                                 Inactive
                             </a>
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
                         </td>
                         <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <button class="bg-blue-500 mx-1 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
@@ -170,11 +125,7 @@
                                     Edit
                                 </Link>
                             </button>
-<<<<<<< HEAD
-                            <button @click="deleteSubcategory(subcategory, i)" class="bg-red-500 mx-1 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
-=======
-                            <button class="bg-red-500 mx-1 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
+                            <button @click="deleteSubcategory(subcategory, index)" class="bg-red-500 mx-1 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
                                 <i class="fa-solid fa-trash"></i>
                                 Delete
                             </button>
@@ -188,12 +139,7 @@
                 <pagination :links="subcategories.links" />
             </div>
         </div>
-<<<<<<< HEAD
       </AuthenticatedLayout>
-=======
-    </AuthenticatedLayout>
-    
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
 </template>
 
 

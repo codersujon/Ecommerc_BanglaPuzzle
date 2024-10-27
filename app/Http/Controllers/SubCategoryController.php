@@ -81,7 +81,6 @@ class SubCategoryController extends Controller
      */
     public function destroy(String $id)
     {
-
         $subcategory = SubCategory::findOrFail($id);
         $subcategory->delete();
         return redirect()->route('subcategories.index')->with('success', 'SubCategory Deleted!');

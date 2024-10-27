@@ -54,7 +54,6 @@ let showingTwoLevelMenu = ref(false)
             </nav-link>
 
             <nav-link :href="route('subcategories.index')" :active="route().current('subcategories.index')">
-<<<<<<< HEAD
                 <template #icon>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                          xmlns="http://www.w3.org/2000/svg">
@@ -65,21 +64,6 @@ let showingTwoLevelMenu = ref(false)
                 Subcategory
             </nav-link>
 
-
-            <nav-link :href="route('users.index')" :active="route().current('users.index')">
-=======
->>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
-                <template #icon>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </template>
-                SubCategory
-            </nav-link>
-
-           
             <a class="flex items-center mt-4 py-2 px-6 text-gray-100" href="#" @click="showingTwoLevelMenu = !showingTwoLevelMenu">
                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -114,8 +98,6 @@ let showingTwoLevelMenu = ref(false)
                 </template>
                 Logout
             </nav-link>
-
-            
         </nav>
     </div>
 </template>
