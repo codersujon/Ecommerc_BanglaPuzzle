@@ -61,19 +61,30 @@ class SubCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SubCategory $subCategory)
+    public function edit(String $id)
     {
+        $subcategory = SubCategory::with('category')->findOrFail($id);
         return Inertia::render('Subcategory/Edit', [
-            'subcategory' => SubCategory::with('category')->get()
+            'subcategory' => $subcategory,
+            'categories' => Category::all(),
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(Request $request, $id)
     {
-        //
+        // Inline Validation
+        $validateData = $request->validate([
+            'category_id' => 'required',
+            'subcategory_name' => 'required|max:255',
+            'description' => 'required'
+        ]);
+
+        $subcategory = SubCategory::findOrFail($id);
+        $subcategory->update($validateData);
+        return redirect()->route('subcategories.index')->with('success', 'SubCategory Updated!');
     }
 
     /**
