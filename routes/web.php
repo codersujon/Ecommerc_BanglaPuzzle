@@ -34,14 +34,19 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/about', fn () => Inertia::render('About'))->name('about');
-
     Route::get('users', [UserController::class, 'index'])->name('users.index');
 
     /**
      * Category
      */
     Route::resource('categories', CategoryController::class)->except(['show']);
+<<<<<<< HEAD
+=======
+    
+    /**
+     * SubCategory
+     */
+>>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
     Route::resource('subcategories', SubCategoryController::class)->except(['show']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

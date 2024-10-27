@@ -24,8 +24,13 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         return Inertia::render('Subcategory/Create',[
             'categories' => Category::all()
+=======
+        return Inertia::render('Subcategory/Create', [
+            "categories" => Category::all(),
+>>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
         ]);
     }
 
@@ -63,7 +68,9 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subCategory)
     {
-        //
+        return Inertia::render('Subcategory/Edit', [
+            'subcategory' => SubCategory::with('category')->get()
+        ]);
     }
 
     /**
@@ -79,8 +86,12 @@ class SubCategoryController extends Controller
      */
     public function destroy(String $id)
     {
+<<<<<<< HEAD
         $subcategory = SubCategory::findOrFail($id);
         $subcategory->delete();
         return redirect()->route('subcategories.index')->with('success', 'SubCategory Deleted!');
+=======
+       
+>>>>>>> add39943fc9deeb54ef449774d8c00dfad6318b8
     }
 }
