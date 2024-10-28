@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
@@ -36,15 +37,15 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('users', [UserController::class, 'index'])->name('users.index');
 
-    /**
-     * Category
-     */
+    // Category
     Route::resource('categories', CategoryController::class)->except(['show']);
     
-    /**
-     * SubCategory
-     */
+    // SubCategory
     Route::resource('subcategories', SubCategoryController::class)->except(['show']);
+
+    // Product
+    Route::resource('products', ProductController::class)->except(['show']);
+    
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

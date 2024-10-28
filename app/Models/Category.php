@@ -27,11 +27,6 @@ class Category extends Model
      * Relationship with SubCategory
      * One Category has Many SubCategories
     */
-    public function subcategory(){
-        return $this->hasMany(SubCategory::class);
-    }
-
-    
     public function subcategories(){
         return $this->hasMany(SubCategory::class);
     }
